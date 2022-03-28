@@ -13,7 +13,6 @@ from opendr.lighting import LambertianPointLight
 from opendr.renderer import ColoredRenderer
 from opendr.filters import gaussian_pyramid
 
-from util import im
 from util.logger import log
 from lib.frame import FrameData
 from models.smpl import Smpl, copy_smpl, joints_coco
@@ -35,8 +34,6 @@ def get_cb(viz_rn, f):
                 cv2.circle(debug, tuple(j.astype(np.int)), 3, (0, 0, 0.8), -1)
             for j in f.keypoints[:, :2]:
                 cv2.circle(debug, tuple(j.astype(np.int)), 3, (0, 0.8, 0), -1)
-
-            im.show(debug, id='pose', waittime=1)
     else:
         cb = None
 

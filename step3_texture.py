@@ -12,7 +12,6 @@ from opendr.camera import ProjectPoints
 from opendr.geometry import VertNormals
 from tex.iso import Isomapper, IsoColoredRenderer
 
-from util import im
 from util.logger import log
 from models.smpl import Smpl
 
@@ -117,9 +116,6 @@ def main(consensus_file, camera_file, video_file, pose_file, masks_file, out, mo
             idx = np.dstack((static_indices[0], static_indices[1], where))[part_mask == 1]
             tex_agg[list(idx[:, 0]), list(idx[:, 1]), list(idx[:, 2])] = part_tex[part_mask == 1]
             normal_agg[list(idx[:, 0]), list(idx[:, 1]), list(idx[:, 2])] = iso_normals[part_mask == 1]
-
-            if display:
-                im.show(part_tex, id='part_tex', waittime=1)
 
         else:
             cap.grab()
